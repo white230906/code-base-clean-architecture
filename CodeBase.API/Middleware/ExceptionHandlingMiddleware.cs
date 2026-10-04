@@ -23,6 +23,19 @@ public sealed class ExceptionHandlingMiddleware
         {
             await _next(context);
         }
+        catch (OperationCanceledException)
+            when (context.RequestAborted.IsCancellationRequested)
+        {
+            _logger.LogInformation(
+                "Request disconnected while processing {Method} {Path}",
+                context.Request.Method,
+                context.Request.Path);
+
+            if (!context.Response.HasStarted)
+            {
+                context.Response.StatusCode = StatusCodes.Status499ClientClosedRequest;
+            }
+        }
         catch (Exception exception)
         {
             if (context.Response.HasStarted)

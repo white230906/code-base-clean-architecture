@@ -175,6 +175,9 @@ code-base-clean-architecture/
     │   ├── SwaggerExtensions.cs
     │   └── WebApplicationExtensions.cs
     │
+    ├── Filters/
+    │   └── ValidationActionFilter.cs
+    │
     ├── Middleware/
     │   └── ExceptionHandlingMiddleware.cs
     ├── Services/
