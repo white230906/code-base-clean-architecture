@@ -1,0 +1,13 @@
+@CodeBase.API_HostAddress = http://localhost:5095
+
+GET {{CodeBase.API_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+POST {{CodeBase.API_HostAddress}}/api/sample/echo
+Content-Type: application/json
+
+{
+  "message": "Hello Clean Architecture"
+}
