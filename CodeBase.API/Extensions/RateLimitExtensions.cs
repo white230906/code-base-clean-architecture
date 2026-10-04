@@ -13,6 +13,18 @@ public static class RateLimitExtensions
         var permitLimit = configuration.GetValue("RateLimiting:PermitLimit", 100);
         var windowSeconds = configuration.GetValue("RateLimiting:WindowSeconds", 60);
 
+        if (permitLimit <= 0)
+        {
+            throw new InvalidOperationException(
+                "RateLimiting:PermitLimit must be greater than zero.");
+        }
+
+        if (windowSeconds <= 0)
+        {
+            throw new InvalidOperationException(
+                "RateLimiting:WindowSeconds must be greater than zero.");
+        }
+
         services.AddRateLimiter(options =>
         {
             options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;

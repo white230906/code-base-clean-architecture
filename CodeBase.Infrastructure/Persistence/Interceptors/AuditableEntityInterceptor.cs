@@ -32,6 +32,13 @@ public sealed class AuditableEntityInterceptor : SaveChangesInterceptor
 
         var now = DateTimeOffset.UtcNow;
 
+        foreach (var entry in context.ChangeTracker.Entries<ISoftDeletable>()
+                     .Where(entry => entry.State == EntityState.Deleted))
+        {
+            entry.State = EntityState.Modified;
+            entry.Entity.MarkDeleted();
+        }
+
         foreach (var entry in context.ChangeTracker.Entries<IAuditableEntity>())
         {
             if (entry.State == EntityState.Added)

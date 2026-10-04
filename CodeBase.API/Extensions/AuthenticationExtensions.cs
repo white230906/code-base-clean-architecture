@@ -12,13 +12,19 @@ public static class AuthenticationExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        var authentication = services.AddAuthentication();
         services.AddAuthorization();
 
         if (!configuration.GetValue<bool>("Features:Jwt"))
         {
+            services.AddAuthentication();
             return services;
         }
+
+        var authentication = services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        });
 
         var options = configuration
             .GetRequiredSection(JwtOptions.SectionName)

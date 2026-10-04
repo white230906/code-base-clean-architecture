@@ -6,8 +6,8 @@
     "Web",
     "ASP.NET Core"
   ],
-  "identity": "Hung.CodeBase.Template",
-  "name": "Hung BaseCode",
+  "identity": "Hung.CleanArchitecture.Template",
+  "name": "Hung Clean Architecture API",
   "shortName": "basecode",
   "preferNameDirectory": true,
   "sources": [
@@ -20,7 +20,9 @@
         "**/.idea/**",
         "**/*.user",
         "**/*.lock.json",
-        "Template-config.md"
+        "Template-config.md",
+        "docs/**",
+        ".template-tests/**"
       ]
     }
   ],
@@ -54,7 +56,7 @@ dotnet new install .
 Nếu đã cài phiên bản cũ:
 
 ```bash
-dotnet new uninstall Hung.CleanArchitecture.Template
+dotnet new uninstall .
 dotnet new install .
 ```
 

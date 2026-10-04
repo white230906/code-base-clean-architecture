@@ -15,8 +15,8 @@ public static class WebApplicationExtensions
 
         app.UseHttpsRedirection();
         app.UseCors(CorsExtensions.FrontendPolicy);
-        app.UseRateLimiter();
         app.UseAuthentication();
+        app.UseRateLimiter();
         app.UseAuthorization();
         app.MapControllers();
         app.MapHealthChecks("/health");

@@ -1,6 +1,6 @@
 namespace CodeBase.Domain.Common;
 
-public abstract class BaseEntity<TKey> : IAuditableEntity
+public abstract class BaseEntity<TKey> : IAuditableEntity, ISoftDeletable
     where TKey : notnull
 {
     public TKey Id { get; protected set; } = default!;

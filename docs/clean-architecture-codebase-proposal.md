@@ -89,7 +89,8 @@ code-base-clean-architecture/
 │   ├── CodeBase.Domain.csproj
 │   ├── Common/
 │   │   ├── BaseEntity.cs
-│   │   └── IAuditableEntity.cs
+│   │   ├── IAuditableEntity.cs
+│   │   └── ISoftDeletable.cs
 │   ├── Entities/
 │   └── Enums/
 │
@@ -390,8 +391,8 @@ AddPresentation(configuration)
 
 UseExceptionHandling()
 UseCors()
-UseRateLimiter()
 UseAuthentication()
+UseRateLimiter()
 UseAuthorization()
 MapControllers()
 ```
@@ -499,7 +500,8 @@ Template không chứa entity của dự án đặt sân. Khi tạo project th�
 Domain/
 ├── Common/
 │   ├── BaseEntity.cs
-│   └── IAuditableEntity.cs
+│   ├── IAuditableEntity.cs
+│   └── ISoftDeletable.cs
 ├── Entities/
 │   ├── User.cs
 │   ├── Facility.cs
